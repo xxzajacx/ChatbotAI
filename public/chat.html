@@ -289,8 +289,23 @@
     }
 
     function handleFailedQuery(errorMessage) {
+        chatMessages.innerHTML = ''; // Clear previous messages
         appendMessage('bot', errorMessage);
         predefinedQuestionsContainer.style.display = 'flex';
+        // Add back button to restore previous conversation
+        const backButton = document.createElement('button');
+        backButton.className = 'predefined-question';
+        backButton.textContent = 'Wróć do poprzedniej rozmowy';
+        backButton.addEventListener('click', () => {
+            chatMessages.innerHTML = ''; // Clear error message
+            predefinedQuestionsContainer.style.display = 'none';
+            // Re-append initial message and options if no prior conversation
+            if (chatMessages.children.length === 0) {
+                appendMessage('bot', initialMessage);
+                predefinedQuestionsContainer.style.display = 'flex';
+            }
+        });
+        predefinedQuestionsContainer.appendChild(backButton);
     }
 
     async function submitMessage(message) {
