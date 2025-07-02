@@ -89,7 +89,6 @@
             flex-direction: column;
             gap: 8px;
             background: var(--background-light);
-            border-top: 1px solid var(--border-color);
         }
         .predefined-question {
             background-color: #fff;
@@ -290,7 +289,6 @@
     }
 
 function handleFailedQuery(errorMessage) {
-        chatMessages.innerHTML = '';
         appendMessage('bot', errorMessage);
         predefinedQuestionsContainer.style.display = 'flex';
     }
