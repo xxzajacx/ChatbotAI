@@ -288,7 +288,7 @@
         if(show) chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-function handleFailedQuery(errorMessage) {
+    function handleFailedQuery(errorMessage) {
         appendMessage('bot', errorMessage);
         predefinedQuestionsContainer.style.display = 'flex';
     }
@@ -350,32 +350,32 @@ function handleFailedQuery(errorMessage) {
         }
     }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadPredefinedQuestions();
+    document.addEventListener('DOMContentLoaded', () => {
+        loadPredefinedQuestions();
 
-    chatToggle.addEventListener('click', () => {
-        if (chatMessages.children.length === 0) {
-             appendMessage('bot', initialMessage);
-             predefinedQuestionsContainer.style.display = 'flex';
-        }
-    }, { once: true });
+        chatToggle.addEventListener('click', () => {
+            if (chatMessages.children.length === 0) {
+                 appendMessage('bot', initialMessage);
+                 predefinedQuestionsContainer.style.display = 'flex';
+            }
+        }, { once: true });
 
-    const sendBtnIcon = document.getElementById('send-btn-icon');
+        const sendBtnIcon = document.getElementById('send-btn-icon');
 
-    const sendMessage = () => {
-        const message = chatInput.value.trim();
-        if (message) {
-            submitMessage(message);
-        }
-    };
-    sendBtnIcon.addEventListener('click', sendMessage);
-    
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
+        const sendMessage = () => {
+            const message = chatInput.value.trim();
+            if (message) {
+                submitMessage(message);
+            }
+        };
+        sendBtnIcon.addEventListener('click', sendMessage);
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
     });
-});
 </script>
 
 </body>
